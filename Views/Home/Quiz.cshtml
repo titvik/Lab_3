@@ -1,0 +1,18 @@
+@model lab3.Models.SolutionModel;
+
+@{
+    ViewData["Title"] = "Quiz";
+}
+
+<h2>Quiz</h2>
+
+<b>@TempData.Peek("curr_task") = </b> <br>
+    <form method="POST">
+    <div class="form-group w-25">
+            <input type="number" class="form-control" asp-for="solution">
+            <span style="color: red;" asp-validation-for="solution"></span>
+            <div style="color: red;" class="validation" asp-validation-summary="ModelOnly"></div>
+    </div>
+    <button type="submit" class="btn btn-secondary" name="btn" value="next">Next</button>
+    <button type="submit" class="btn btn-primary" name="btn" value="finish">Finish</button>
+</form>

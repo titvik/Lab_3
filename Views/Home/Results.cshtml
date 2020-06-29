@@ -1,0 +1,36 @@
+@{
+    ViewData["Title"] = "Quiz";
+
+    List<String> data = Context.Session.GetObj<List<String>>("SessionTasks");
+    int TasksCount;
+    int DataCount;
+    try
+    {
+        TasksCount = data.Count/2;
+        DataCount = data.Count;
+    }
+    catch
+    {
+        TasksCount = 0;
+        DataCount = 0;
+    }
+    
+}
+
+<h2>Quiz results</h2>
+<br>
+
+@if (DataCount == 0)
+{
+    <h4 style="color: red;">Вы не прошли тест!</h4>
+}
+else {
+<h4>Right answers @TempData.Peek("RightAnswerCount") out @TasksCount</h4>
+
+        <ol>
+            @for (var i = 0; i < @DataCount; i+=2)
+            {   
+                <li>@data[i] = @data[i+1]</li>
+            }
+        </ol>
+}
